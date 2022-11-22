@@ -1,3 +1,9 @@
+fuentes
+https://www.youtube.com/watch?v=58paASypYuY
+https://github.com/jordi-gascon/miradabinaria/blob/014e9b5f9c3e4f2d7c1a3219432f12a99117b47b/tutoriales/wg_ubuntu20-04
+
+
+
 Mi servidor VPN ES VM-IOT alojado en una maquina virtual dentro de FUSIONBMS-SRV SU IP ES
 nombre: VM-IOT
 IP: 192.168.0.246 
@@ -27,8 +33,77 @@ j/7XzK0HwV9hSQzVZNOY69SaquaI7gYoQgkLJsyT1g4=
 0hb3XiipQbh4Fe9iVcwd+2lvYfa0U324OTdDrLxai0E=
 -rw-r--r-- 1 root root  45 nov 22 18:32 02_cliente_clave_privada
 +DrVgDO6PqnvJApcK6QHMlcWJobeQBMhd3Rm+FSWfmo=
+-rw-r--r-- 1 root root  45 nov 22 19:47 03_ciente_clave_publica
+BVbk8DZ9Yynz52+nSXk5UPABfhIQFZNhl1TBUrzah2Q=
+-rw-r--r-- 1 root root  45 nov 22 19:47 03_cliente_clave_privada
+6AvvkR5Oakw8UQLE7S90dlY6VP+/tmnVdJjdTvAKfn0=
+
 
 Para crear nuevo cliente
+####################################################
+##################################################
+###############################################
 
+#Acceso a la carpeta de instalación 
+cd /etc/wireguard
+
+#Creación de pares de claves pública y privada
+wg genkey |tee 03_cliente_clave_privada | wg pubkey > 03_ciente_clave_publica
+
+
+#ver listado de claves
+ls -lh
+#ver claves creadas
+cat 0*
+#se deben copias las ultimas claves creadas y luego editar el archivo de configuración
+
+#Creación de archivo de texto con configuración del servidor y se debe agregar un peer nuevo con nueva IP
+nano wg0.conf
+
+
+#CONFIGURACIÓN DEL SERVER
+###################################################
+
+[Interface]
+PrivateKey = <Clave privada del server>
+Address = 10.0.0.1/32
+PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+ListenPort = 51820
+
+[Peer]
+PublicKey = <Clave pública del cliente>
+AllowedIPs = 10.0.0.2/32
+
+####################################################
+#guardar
+ctrl+s 
+#salir
+ctrl+x
+#por ultimo reiniciar server
+sudo -i 
+reboot
+
+CLIENTE!!!!!
+
+#CONFIGURACIÓN DEL CLIENTE 
+#####################################################
+
+[Interface]
+PrivateKey = <Clave privada cliente>
+Address = 10.0.0.2/32
+DNS = 8.8.8.8
+
+[Peer]
+PublicKey = <Clave pública server>
+AllowedIPs = 0.0.0.0/0
+Endpoint =  181.166.146.22:51820
+
+######################################################
+
+
+
+
+#y listo!
 
 
