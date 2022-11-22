@@ -1,0 +1,34 @@
+Mi servidor VPN ES VM-IOT alojado en una maquina virtual dentro de FUSIONBMS-SRV SU IP ES
+nombre: VM-IOT
+IP: 192.168.0.246 
+IP Publica : 181.166.146.22
+USER: david
+Contraseña: Gm4200*.
+
+
+Server Pcpal 
+nombre: FUSIONBMS-SRV
+IP: 192.168.0.2
+IP Publica : 181.166.146.22
+
+
+tiene instalado wireguard y open-ssh accedo por Putty puerto 22 aún cerrado
+Claves de wireguard
+
+-rw------- 1 root root 45 nov 22 17:46 00_server_clave_privada
+aNgFuA4z9kj8IdlA0cfW9mOe9Z9cpgBSewjkbCPxMGg=
+-rw------- 1 root root 45 nov 22 17:46 00_server_clave_publica
+lFA9OsiRTW/C0fVUd8Tya3B+k+w9At4E9auH/9RZkyE=
+-rw------- 1 root root 45 nov 22 17:48 01_ciente_clave_publica
+j/7XzK0HwV9hSQzVZNOY69SaquaI7gYoQgkLJsyT1g4=
+-rw------- 1 root root 45 nov 22 17:48 01_cliente_clave_privada
+6AEB2lQbqsbeSJ+aQb6bpi8mSN0AFPLA9OjIHyrf9nA=
+-rw-r--r-- 1 root root  45 nov 22 18:32 02_ciente_clave_publica
+0hb3XiipQbh4Fe9iVcwd+2lvYfa0U324OTdDrLxai0E=
+-rw-r--r-- 1 root root  45 nov 22 18:32 02_cliente_clave_privada
++DrVgDO6PqnvJApcK6QHMlcWJobeQBMhd3Rm+FSWfmo=
+
+Para crear nuevo cliente
+
+
+
