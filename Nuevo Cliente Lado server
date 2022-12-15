@@ -1,0 +1,26 @@
+#Paso 1: Acceso a la carpeta de instalación con permisos root 
+  sudo -i 
+  cd /etc/wireguard
+
+#Paso 2: Creación de pares de claves pública y privada
+  wg genkey |tee 03_cliente_clave_privada | wg pubkey > 03_ciente_clave_publica
+
+#Paso 3: Verificacion de creacion claves publicas y privadas 
+  ls -lh
+  
+#Paso 4: visulizar claves nuevas, se deben copias las 2 ultimas claves creadas 
+  cat 0*
+  
+#Paso 5: se debe editar el archivo de configuración
+  nano wg0.conf 
+  
+#Paso 6: editar archivo peer con los datos del nuevo cliente
+  [Peer]
+  PublicKey = <Clave pública del cliente>
+  AllowedIPs = 10.0.0.XX/32 <XX DIRECCION IP Asignada>
+  
+#Paso 7:Guardar cambios
+  presionar la combinacion de teclas
+  ctrl + x  y luego Yes
+  
+  #Y eso es todo! 
