@@ -1,9 +1,8 @@
-#CONFIGURACIÓN DEL CLIENTE# copiar y pegar con los datos, 
+                    #CONFIGURACIÓN DEL CLIENTE# 
 ########################################################################
-
                 [Interface]
                 PrivateKey = <Clave privada cliente>
-                Address = 10.0.0.2/32
+                Address = 10.0.0.XX/32
                 DNS = 8.8.8.8
 
                 [Peer]
@@ -11,60 +10,91 @@
                 AllowedIPs = 0.0.0.0/0
                 Endpoint = IP_Server:51820
 
-#######################################################################
+#########################################################################
+                #COPIAR Y PEGAR CLIENTES FUSIONBMS#
+             #MODIFICAR [Interface] PARA CADA CLIENTE#
 
+              [Interface]
+              PrivateKey = <Clave privada cliente Tomar de abajo>
+              Address = 10.0.0.XX/32   <ip asignada Tomar de abajo>
+              DNS = 8.8.8.8
+
+              [Peer]
+              PublicKey = lFA9OsiRTW/C0fVUd8Tya3B+k+w9At4E9auH/9RZkyE=
+              AllowedIPs = 0.0.0.0/1
+              Endpoint = 181.166.146.22:51820
+             
+        
+#########################################################################
+#########################  IP DE SERVIDOR VPN  ##########################
+  
 #IP VPN de server linux VM-IOT 10.0.0.1, al estar alojado en la PC de la oficina su ip publica es 181.166.146.22:51820
 #la ip publica debe ser cambiada al mudarse el servidor
+
+    [Peer]
+    PublicKey = lFA9OsiRTW/C0fVUd8Tya3B+k+w9At4E9auH/9RZkyE=
+    AllowedIPs = 0.0.0.0/1, 128.0.0.0/1
+    Endpoint = 181.166.146.22:51820
+
+##################### LISTADO DE CLIENTES VPN ############################################
+
+#Cliente numero 1, mi laptop lenovo
+
     [Interface]
-    PrivateKey = aNgFuA4z9kj8IdlA0cfW9mOe9Z9cpgBSewjkbCPxMGg=
-    Address = 10.0.0.1/32
-    PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE
-    PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o enp0s3 -j MASQUERADE
-    ListenPort = 51820
-    
-#Cliente numero 1, es el ES-SRV que corresponde a la mini PC de la oficina.
-    [Peer]
-    PublicKey = j/7XzK0HwV9hSQzVZNOY69SaquaI7gYoQgkLJsyT1g4=
-    AllowedIPs = 10.0.0.2/32
+    PrivateKey = 6AEB2lQbqsbeSJ+aQb6bpi8mSN0AFPLA9OjIHyrf9nA=
+    Address = 10.0.0.2/32
+    DNS = 8.8.8.8
 
-#Cliente numero 2, mi laptop lenovo
-    [Peer]
-    PublicKey = 0hb3XiipQbh4Fe9iVcwd+2lvYfa0U324OTdDrLxai0E=
-    AllowedIPs = 10.0.0.3/32
+#Cliente numero 2, es el ES-SRV que corresponde a la mini PC de la oficina.
+    [Interface]
+    PrivateKey = <CLAVE PRIVADA>
+    Address = 10.0.0.3/32
+    DNS = 8.8.8.8
+ 
 #cliente Numero 3, Box 1, la que está dentro de la caja metálica es un teltónika TRB141
-    [Peer]
-    PublicKey = BVbk8DZ9Yynz52+nSXk5UPABfhIQFZNhl1TBUrzah2Q=
-    AllowedIPs = 10.0.0.4/32
-    [Peer]
+    [Interface]
+    PrivateKey = <CLAVE PRIVADA>
+    Address = 10.0.0.4/32
+    DNS = 8.8.8.8
+  
 
-#Claves disponibles 
-
-      [Peer]
-      PublicKey = BVbk8DZ9Yynz52+nSXk5UPABfhIQFZNhl1TBUrzah2Q=
-      AllowedIPs = 10.0.0.5/32
-
-      [Peer]
-      PublicKey = 6T1za8nFcgLhk+rWg/hBIPIQBxvw5HdmzYhftfP2Tgw=
-      AllowedIPs = 10.0.0.6/32
+#########################    Claves e IP  disponibles     ####################################
+                   toma la que necesites y actualia el registro.
+    
 
 
-      [Peer]
-      PublicKey = vk1tPA0F5/HJkBACpoWIoBLeTC7n0YcNT/7PIAmSVmo=
-      AllowedIPs = 10.0.0.7/32
+            [Interface]
+            PrivateKey = 6AvvkR5Oakw8UQLE7S90dlY6VP+/tmnVdJjdTvAKfn0=
+            Address = 10.0.0.5/32
+            DNS = 8.8.8.8
 
+            [Interface]
+            PrivateKey = IKLnnJUyeqiB8QZQeJgSLHi0DNsUV2O40a3XgEK49Ww=
+            Address = 10.0.0.6/32
+            DNS = 8.8.8.8
 
-      [Peer]
-      PublicKey = mFnY6Hi+AQW8bf0IOz47iufUT8R/qJQNau3xZybGNQ8=
-      AllowedIPs = 10.0.0.8/32
+            [Interface]
+            PrivateKey = iE92oIGnnhmpITcgt2vJwfmfSjxzH79hnLbCdr3GRGY=
+            Address = 10.0.0.7/32
+            DNS = 8.8.8.8
 
-      [Peer]
-      PublicKey = SRb0PZMmiYeLDoVBkBfIGjuIekVtX6pbTuwGi2AKT2E=
-      AllowedIPs = 10.0.0.9/32
+            [Interface]
+            PrivateKey = GGvNsfLtC/UWlCDZy6oSg8THL/zb5pmFerJaHxAZYUY=
+            Address = 10.0.0.8/32
+            DNS = 8.8.8.8
 
-      [Peer]
-      PublicKey = Fq2Xlna1YHjFudCD/vytkmF0RN7+flD1z6is+JmGtT4=
-      AllowedIPs = 10.0.0.10/32
+            [Interface]
+            PrivateKey = cN5AUBvd4eeBWb+qlacA39BjvXBrRBeBQOiQ7fjd8kA=
+            Address = 10.0.0.9/32
+            DNS = 8.8.8.8
 
-      [Peer]
-      PublicKey = h1WKPe3zB2q148trtfUwfyV98YykRutqW79Ktlh0NAA=
-      AllowedIPs = 10.0.0.11/32
+            [Interface]
+            PrivateKey = aPCI8Sgi7+BcFVsU2xMK5Mx8FNjXI3JoVlmnVvzLI10=
+            Address = 10.0.0.10/32
+            DNS = 8.8.8.8
+
+            [Interface]
+            PrivateKey = +GaU0C3BdwYu5vwuubvmWs163covxau8Cyi+Mu+QlnY=
+            Address = 10.0.0.11/32
+            DNS = 8.8.8.8
+
