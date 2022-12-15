@@ -17,6 +17,11 @@ umask 077
 wg genkey |tee 00_server_clave_privada | wg pubkey > 00_server_clave_publica
 wg genkey |tee 01_cliente_clave_privada | wg pubkey > 01_ciente_clave_publica
 
+
+####### creacion de cliente vpn
+wg genkey |tee 0X_cliente_clave_privada | wg pubkey > 0X_ciente_clave_publica
+
+
 #Listar interfaces de red
 ip addr
 
