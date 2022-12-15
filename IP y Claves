@@ -1,4 +1,17 @@
+#CONFIGURACIÓN DEL CLIENTE# copiar y pegar con los datos, 
+########################################################################
 
+                [Interface]
+                PrivateKey = <Clave privada cliente>
+                Address = 10.0.0.2/32
+                DNS = 8.8.8.8
+
+                [Peer]
+                PublicKey = <Clave pública server>
+                AllowedIPs = 0.0.0.0/0
+                Endpoint = IP_Server:51820
+
+#######################################################################
 
 #IP VPN de server linux VM-IOT 10.0.0.1, al estar alojado en la PC de la oficina su ip publica es 181.166.146.22:51820
 #la ip publica debe ser cambiada al mudarse el servidor
