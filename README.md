@@ -18,8 +18,18 @@ wg genkey |tee 00_server_clave_privada | wg pubkey > 00_server_clave_publica
 wg genkey |tee 01_cliente_clave_privada | wg pubkey > 01_ciente_clave_publica
 
 
-####### creacion de cliente vpn
+####### creacion de cliente vpn  SEGUIR CORRELATIVO ########## 
+####PASO 1: Creación de las claves publica y privada del cliente ####
 wg genkey |tee 0X_cliente_clave_privada | wg pubkey > 0X_ciente_clave_publica
+
+####PASO 2: verificación de que se han creado correctamente las claves ######
+ls -lh
+####PASO 3: ver las claves publicas y privada, por defecto las 2 ultimas y copiarlas  ######
+cat 0*
+####PASO 4: Copiar ambas claves por defecto la penultima es publica y la ultima la privada #####
+
+
+
 
 
 #Listar interfaces de red
